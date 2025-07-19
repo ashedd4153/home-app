@@ -16,7 +16,6 @@ mortgage_rate = st.number_input("Mortgage Rate (annual %)", min_value=0.0, max_v
 
 income = st.slider("Household Income ($)", min_value=50000, max_value=1000000, value=500000, step=10000)
 monthly_cash_flow = st.slider("Target Monthly Cash Flow ($)", min_value=0, max_value=20000, value=16000, step=500)
-other_annual_expenses = st.slider("Other Annual Expenses ($)", min_value=0, max_value=200000, value=50000, step=5000)
 other_lifestyle_expenses = st.slider("Other Yearly Expenses (Non-Housing) ($)", min_value=0, max_value=200000, value=50000, step=5000)
 
 st.write(f"Estimated Post-Tax Income: ${0:,.0f}")
