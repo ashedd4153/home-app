@@ -3,3 +3,4 @@ pandas
 numpy
 numpy_financial
 homeharvest
+st_aggrid
