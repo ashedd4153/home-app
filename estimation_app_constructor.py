@@ -1,5 +1,5 @@
 import pandas as pd
-from HomeHarvest.homeharvest import scrape_property
+from homeharvest import scrape_property
 import os
 
 class ListingData:
