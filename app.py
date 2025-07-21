@@ -168,62 +168,25 @@ if st.session_state.selected_id:
         st.rerun()
 
     # Show details as markdown
-    detail_text = """
-    **MLS ID**: {mls}
+    detail_text = f"""
+**MLS ID**: {listing["mls_id"]}  
+**Status**: {listing["status"]}  
+**Price**: ${listing["list_price"]:,.0f}  
+**Sold Price**: ${listing["sold_price"]:,.0f}  
+**Estimated Price**: ${listing["estimated_price"]:,.0f}  
+**Tax**: ${listing["tax"]:,.0f}  
+**Favorite**: {"Yes" if is_favorite else "No"}  
 
-    **Status**: {status}
+**Beds/Baths**: {listing["beds"]} bd / {listing["full_baths"]} fb / {listing["half_baths"]} hb  
+**Size**: {listing["sqft"]} sqft | Lot: {int(round(listing["lot_sqft"])) if pd.notna(listing["lot_sqft"]) else ""} sqft  
+**Year Built**: {int(round(listing["year_built"])) if pd.notna(listing["year_built"]) else ""}  
 
-    **Price**: ${price:,.0f}
+**Property URL**: [{listing["property_url"]}]({listing["property_url"]})  
+**Google Maps**: [{listing["google_maps_url"]}]({listing["google_maps_url"]})  
 
-    **Sold Price**: ${sold_price:,.0f}
-
-    **Tax**: ${tax:,.0f}
-
-    **Beds**: {beds}
-
-    **Full Baths**: {full_baths}
-
-    **Half Baths**: {half_baths}
-
-    **Square Feet**: {sqft}
-
-    **Year Built**: {year}
-
-    **Lot Size (sqft)**: {lot}
-
-    **Estimated Price**: {estimate}
-
-    **Favorite**: {favorite}
-
-    **AC Type**: {ac}
-
-    **Siding Type**: {siding}
-
-    **Property URL**: [{url}]({url})
-
-    **Google Maps URL**: [{maps}]({maps})
-
-    **Description**: {text}
-    """.format(
-        mls=listing["mls_id"],
-        status=listing["status"],
-        price=listing["list_price"] or 0,
-        sold_price=listing["sold_price"] or 0,
-        tax=listing["tax"] or 0,
-        beds=listing["beds"],
-        full_baths=listing["full_baths"],
-        half_baths=listing["half_baths"],
-        sqft=listing["sqft"],
-        year=int(round(listing["year_built"])) if pd.notna(listing["year_built"]) else "",
-        lot=int(round(listing["lot_sqft"])) if pd.notna(listing["lot_sqft"]) else "",
-        estimate=listing["estimated_price"],
-        favorite="Yes" if is_favorite else "No",
-        ac=listing.get("ac_type", ""),
-        siding=listing.get("siding_type", ""),
-        url=listing["property_url"],
-        maps=listing["google_maps_url"],
-        text=listing["text"]
-    )
+**Description**:  
+{listing["text"]}
+    """
     st.markdown(detail_text)
 
     # Show local photos in two-column layout
