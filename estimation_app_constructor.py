@@ -25,6 +25,8 @@ class ListingData:
                 )
                 props["town_searched"] = town
                 props["status"] = status
+                props["ac_type"] = props.get("ac_type") or props.get("cooling") or None
+                props["siding_type"] = props.get("siding_type") or props.get("exterior_features") or None
                 frames.append(props)
 
         properties = pd.concat(frames, ignore_index=True).drop_duplicates(subset="mls_id").reset_index(drop=True)
@@ -90,7 +92,9 @@ class ListingData:
                 "estimated_value",
                 "tax",
                 "tax_history",
-                "status"
+                "status",
+                "ac_type",
+                "siding_type",
             ]
             for col in merged.columns:
                 if col.endswith("_new") == False and col not in ["mls_id", "_merge"]:
@@ -116,6 +120,11 @@ class ListingData:
             properties['favorite'] = False
         else:
             properties['favorite'] = properties['favorite'].fillna(False)
+
+        if "ac_type" not in properties.columns:
+            properties["ac_type"] = None
+        if "siding_type" not in properties.columns:
+            properties["siding_type"] = None
 
         properties.to_csv(csv_path, index=False)
 

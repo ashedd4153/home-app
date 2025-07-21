@@ -195,6 +195,10 @@ if st.session_state.selected_id:
 
     **Favorite**: {favorite}
 
+    **AC Type**: {ac}
+
+    **Siding Type**: {siding}
+
     **Property URL**: [{url}]({url})
 
     **Google Maps URL**: [{maps}]({maps})
@@ -214,6 +218,8 @@ if st.session_state.selected_id:
         lot=int(round(listing["lot_sqft"])) if pd.notna(listing["lot_sqft"]) else "",
         estimate=listing["estimated_price"],
         favorite="Yes" if is_favorite else "No",
+        ac=listing.get("ac_type", ""),
+        siding=listing.get("siding_type", ""),
         url=listing["property_url"],
         maps=listing["google_maps_url"],
         text=listing["text"]
