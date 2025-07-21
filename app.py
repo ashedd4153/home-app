@@ -171,10 +171,9 @@ if st.session_state.selected_id:
     detail_text = f"""
 **MLS ID:** {listing['mls_id']}  
 **Status:** {listing['status']}  
-**Price:** ${listing['list_price']:,.0f}  
-
-**Sold Price:** ${listing['sold_price']:,.0f}  
-**Estimated Price:** {'${:,.0f}'.format(listing['estimated_price']) if pd.notna(listing['estimated_price']) else 'N/A'}  
+**Price:** ${listing['list_price']:,.0f}\n  
+**Sold Price:** ${listing['sold_price']:,.0f}\n  
+**Estimated Price:** {'${:,.0f}'.format(listing['estimated_price']) if pd.notna(listing['estimated_price']) else 'N/A'}\n  
 **Tax:** {'${:,.0f}'.format(listing['tax']) if pd.notna(listing['tax']) else 'N/A'}  
 **Favorite:** {"Yes" if is_favorite else "No"}  
 
