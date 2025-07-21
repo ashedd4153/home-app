@@ -169,22 +169,22 @@ if st.session_state.selected_id:
 
     # Show details as markdown
     detail_text = f"""
-**MLS ID**: {listing["mls_id"]}  
-**Status**: {listing["status"]}  
-**Price**: ${listing["list_price"]:,.0f}  
-**Sold Price**: ${listing["sold_price"]:,.0f}  
-**Estimated Price**: ${listing["estimated_price"]:,.0f}  
-**Tax**: ${listing["tax"]:,.0f}  
-**Favorite**: {"Yes" if is_favorite else "No"}  
+**MLS ID:** {listing["mls_id"]}  
+**Status:** {listing["status"]}  
+**Price:** ${listing["list_price"]:,.0f}  
+**Sold Price:** ${listing["sold_price"]:,.0f}  
+**Estimated Price:** {f'${listing["estimated_price"]:,.0f}' if pd.notna(listing["estimated_price"]) else 'N/A'}  
+**Tax:** {f'${listing["tax"]:,.0f}' if pd.notna(listing["tax"]) else 'N/A'}  
+**Favorite:** {"Yes" if is_favorite else "No"}  
 
-**Beds/Baths**: {listing["beds"]} bd / {listing["full_baths"]} fb / {listing["half_baths"]} hb  
-**Size**: {listing["sqft"]} sqft | Lot: {int(round(listing["lot_sqft"])) if pd.notna(listing["lot_sqft"]) else ""} sqft  
-**Year Built**: {int(round(listing["year_built"])) if pd.notna(listing["year_built"]) else ""}  
+**Beds/Baths:** {listing["beds"]} bd / {listing["full_baths"]} fb / {listing["half_baths"]} hb  
+**Size:** {f'{int(listing["sqft"])} sqft' if pd.notna(listing["sqft"]) else 'N/A'} | Lot: {f'{int(listing["lot_sqft"])} sqft' if pd.notna(listing["lot_sqft"]) else 'N/A'}  
+**Year Built:** {int(round(listing["year_built"])) if pd.notna(listing["year_built"]) else "N/A"}  
 
-**Property URL**: [{listing["property_url"]}]({listing["property_url"]})  
-**Google Maps**: [{listing["google_maps_url"]}]({listing["google_maps_url"]})  
+**Property URL:** [{listing["property_url"]}]({listing["property_url"]})  
+**Google Maps:** [{listing["google_maps_url"]}]({listing["google_maps_url"]})  
 
-**Description**:  
+**Description:**  
 {listing["text"]}
     """
     st.markdown(detail_text)
