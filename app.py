@@ -172,6 +172,7 @@ if st.session_state.selected_id:
 **MLS ID:** {listing['mls_id']}  
 **Status:** {listing['status']}  
 **Price:** ${listing['list_price']:,.0f}  
+
 **Sold Price:** ${listing['sold_price']:,.0f}  
 **Estimated Price:** {'${:,.0f}'.format(listing['estimated_price']) if pd.notna(listing['estimated_price']) else 'N/A'}  
 **Tax:** {'${:,.0f}'.format(listing['tax']) if pd.notna(listing['tax']) else 'N/A'}  
