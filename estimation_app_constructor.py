@@ -3,7 +3,7 @@ from homeharvest import scrape_property
 import os
 
 class ListingData:
-    def __init__(self, towns, min_price=900_000, max_price=1_500_000, csv_path="all_properties.csv", force_refresh=False):
+    def __init__(self, towns, min_price=900_000, max_price=1_800_000, csv_path="all_properties.csv", force_refresh=False):
         self.towns = towns if isinstance(towns, list) else [towns]
         self.min_price = min_price
         self.max_price = max_price

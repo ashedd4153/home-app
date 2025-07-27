@@ -1,5 +1,4 @@
-import streamlit as st
-import streamlit as st
+import streamlit as st  # venv: source ../HomeSearch/.venv/bin/activate
 st.set_page_config(layout="wide")
 import pandas as pd
 from buy_vs_rent_analysis import calculate_buy_vs_rent, compute_cash_allocation_summary
